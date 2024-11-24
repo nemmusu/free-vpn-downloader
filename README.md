@@ -1,5 +1,5 @@
 
-# Free VPN Downloader Scripts
+# Free VPN Downloader 
 
 This repository contains three Python scripts designed to download and configure free VPN `.ovpn` files for use with OpenVPN. The main script, `vpn-downloader.py`, downloads VPN files from multiple sources, while the other two scripts focus on single sources for more specific needs.
 
