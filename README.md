@@ -51,7 +51,7 @@ python3 vpn-downloader.py -o vpn-configs
 
 #### Output Example
 
-```bash
+```
 [VPNGate] Starting configuration process...
 [INFO] Credentials file created: vpn-dir/vpngate.txt
 [VPNGate] Found 99 valid configurations.
