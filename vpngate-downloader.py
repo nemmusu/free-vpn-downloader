@@ -44,23 +44,20 @@ def download_vpngate_csv(url, output_folder, auth_file_name):
         # Create the credentials file
         auth_file_path = create_credentials_file(username, password, output_folder, auth_file_name)
 
-        total = sum(1 for _ in csv_lines)  # Count the total number of lines
-        print(f"Total configurations found: {total}")
-
+        total = 0
         created = 0
+
         for row in reader:
             hostname = row.get('#HostName')
-            if not hostname:
+            config_data_base64 = row.get('OpenVPN_ConfigData_Base64')
+
+            # Skip invalid or unwanted configurations
+            if not hostname or not config_data_base64 or '*' in hostname:
                 continue
 
+            total += 1
             filename = os.path.join(output_folder, f"{hostname}.ovpn")
             if os.path.exists(filename):
-                print(f"File {filename} already exists, skipping.")
-                continue
-
-            config_data_base64 = row.get('OpenVPN_ConfigData_Base64')
-            if not config_data_base64:
-                print(f"Host {hostname} does not contain base64 configuration, skipping.")
                 continue
 
             try:
@@ -87,7 +84,7 @@ def download_vpngate_csv(url, output_folder, auth_file_name):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download and configure VPN Gate .ovpn files")
     parser.add_argument("-o", "--output", required=True, help="Output folder to save .ovpn files")
-    parser.add_argument("-af", "--auth-file", default="vpngate.txt", help="Custom name for the authentication file (default: auth.txt)")
+    parser.add_argument("-af", "--auth-file", default="vpngate.txt", help="Custom name for the authentication file (default: vpngate.txt)")
     args = parser.parse_args()
 
     VPN_GATE_URL = "http://www.vpngate.net/api/iphone/"
