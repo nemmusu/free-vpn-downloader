@@ -5,7 +5,7 @@ This repository contains three Python scripts designed to download and configure
 
 ## Scripts Overview
 
-1. **`vpn-downloader.py`** (All-in-One Solution)
+1. **`vpn-downloader.py`** 
    - Downloads VPN configurations from both [VPNGate](http://www.vpngate.net/) and [VPNBook](https://www.vpnbook.com/freevpn).
    - Processes, configures, and prepares `.ovpn` files automatically.
 
