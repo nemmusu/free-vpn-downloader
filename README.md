@@ -21,14 +21,12 @@ This repository contains three Python scripts designed to download and configure
 - Required Python libraries:
   - `requests`
   - `bs4` (BeautifulSoup)
-  - `shutil`
-  - `zipfile`
-  - `argparse`
+
 
 Install the required libraries using:
 
 ```bash
-pip install requests beautifulsoup4
+pip install -r requirements.txt
 ```
 
 ## Usage
